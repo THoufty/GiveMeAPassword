@@ -6,16 +6,23 @@ function generatePassword() {
   var specialCharacters = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "[", "]", "{", "}", "<", ">"]
   var pwdLength = prompt("Please enter, numerically, the wanted length of your new password. Please pick a number between 8 and 128.")
   
-    // Return if anything but a numeric value is entered
-    if (!pwdLength) {
+  // Return if anything but a numeric value is entered
+  if (!pwdLength) {
+    return generatePassword()
+  }
+
+  // Changing the entered value to a number
+  var enteredLength = parseInt(pwdLength)
+  
+    if (isNaN(enteredLength)) {
       return generatePassword()
     }
-  
-    else if (pwdLength < 8) {
+
+    if (enteredLength < 8) {
       return generatePassword()
     }
       
-    else if (pwdLength > 128) {
+    else if (enteredLength > 128) {
       return generatePassword()
     }
 
@@ -26,9 +33,6 @@ function generatePassword() {
   var useLowercase = confirm("Awesome. How about lowercase letters?")
   var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   var useNumbers = confirm("Alright. And lastly, would you like your new password to utilize numbers as well?")
-
-  // Changing the entered value to a number
-  var enteredLength = parseInt(pwdLength)
 
   // Creating an empty variable for the if statements to fill with concats
   var endSelection = [];
